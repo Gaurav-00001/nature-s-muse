@@ -19,7 +19,12 @@ export default function Index() {
       .select("*")
       .order("created_at", { ascending: false })
       .limit(20);
-    if (data) setEntries(data as unknown as JournalEntry[]);
+    if (data) {
+      setEntries(data.map((d) => ({
+        ...d,
+        analysis: d.analysis as unknown as JournalEntry["analysis"],
+      })) as JournalEntry[]);
+    }
   };
 
   const handleNewEntry = (entry: JournalEntry) => {
