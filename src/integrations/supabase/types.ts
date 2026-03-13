@@ -14,7 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      journal_entries: {
+        Row: {
+          ambience: string
+          analysis: Json | null
+          created_at: string
+          id: string
+          text: string
+          text_hash: string | null
+          user_id: string
+        }
+        Insert: {
+          ambience: string
+          analysis?: Json | null
+          created_at?: string
+          id?: string
+          text: string
+          text_hash?: string | null
+          user_id?: string
+        }
+        Update: {
+          ambience?: string
+          analysis?: Json | null
+          created_at?: string
+          id?: string
+          text?: string
+          text_hash?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
